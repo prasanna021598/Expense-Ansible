@@ -4,6 +4,7 @@
   tasks:
   - name: installing mysql server
     ansible.builtin.command: dnf install mysql-server -y
+    
   - name: enabling mysql service
     ansible.builtin.service:
       - name: mysqld
