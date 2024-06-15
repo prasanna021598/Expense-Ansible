@@ -1,5 +1,5 @@
 - name: backend configurations for expense project
-  hosts: backend
+  hosts: Backend
   tasks:
   - name: disabling nodejs  and enabling nodejs with version 20
     ansible.builtin.command: dnf module disable nodejs -y
