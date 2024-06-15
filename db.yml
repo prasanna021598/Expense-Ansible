@@ -1,0 +1,6 @@
+- name: Condfiguring DB 
+  hosts: DB
+  tasks:
+  - name: installing mysql server
+    ansible.builtin.command:
+      
