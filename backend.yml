@@ -12,10 +12,9 @@
     ansible.builtin.command: mkdir /app
     when: changed is true
   - name: Copying application code to tmp directory
-    ansible.builtin.copy:
-      src: "https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip"
+    ansible.builtin.geturl:
+      src: https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip
       dest: /tmp/backend.zip
-      remote_src: yes
   - name: Unzip the file that is tmp directory
     ansible.builtin.unarchive:
       src: /tmp/backend.zip
