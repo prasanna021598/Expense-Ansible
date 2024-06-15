@@ -1,6 +1,11 @@
 - name: Condfiguring DB 
   hosts: DB
+  become: true
   tasks:
   - name: installing mysql server
-    ansible.builtin.command:
-      
+    ansible.builtin.command: dnf install mysql-server -y
+  - name: enabling mysql service
+    ansible.builtin.service:
+      - name: mysqld
+        enabled: yes
+
