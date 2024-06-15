@@ -1,7 +1,7 @@
 - name: backend configurations for expense project
   hosts: Backend
   become: true
-   vars:
+  vars:
     login_host: db.itindustry.online
     login_password: ExpenseApp@1
   tasks:
