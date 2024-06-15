@@ -16,7 +16,7 @@
     loop:
       - nodejs
       - mysql
-  - name: assing user
+  - name: adding user
     ansible.builtin.user:
       name: expense
       state: present
@@ -30,7 +30,7 @@
   - name: Unzip the file that is tmp directory
     ansible.builtin.unarchive:
       src: /tmp/backend.zip
-      dest: /tmp/
+      dest: /app
       remote_src: yes
   - name : npm install in app directory
     ansible.builtin.command: npm install
