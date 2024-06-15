@@ -19,8 +19,8 @@
         enabled: yes
     - name: check DB connection
       community.mysql.mysql_info:
-        login_user: {{ login_host }}
-        login_password: {{ mysql-root-password }}
+        login_user: "{{ login_host }}"
+        login_password: "{{ mysql-root-password }}"
         filter: version
         ignore_errors: yes
         register: connection-output
