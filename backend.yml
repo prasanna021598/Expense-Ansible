@@ -6,7 +6,7 @@
     ansible.builtin.command: dnf module disable nodejs -y
   - name: enabling version 20
     ansible.builtin.command: dnf module enable nodejs:20 -y
-  - name: installing nodejs 
+  - name: installing nodejs and mysql
     ansible.builtin.dnf:
       name : "{{ item }}"
       state: installed
@@ -27,5 +27,5 @@
   - name: Unzip the file that is tmp directory
     ansible.builtin.unarchive:
       src: /tmp/backend.zip
-      dest: /tmp/backend.zip
+      dest: /tmp/
       remote_src: yes
