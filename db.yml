@@ -1,6 +1,12 @@
 - name: Condfiguring DB 
   hosts: DB
   become: true
+  vars:
+    login_host: DB
+  vars_prompt:
+    - name: mysql-root-password
+      prompt: please enter password
+      private: no
   tasks:
     - name: installing mysql server
       ansible.builtin.dnf:
@@ -11,6 +17,13 @@
         name: mysqld
         state: started
         enabled: yes
-
-
-
+    - name: check DB connection
+      community.mysql.mysql_info:
+        login_user: {{ login_host }}
+        login_password: {{ mysql-root-password }}
+        filter: version
+        ignore_errors: yes
+        register: connection-output
+    - name: printing output of the connection with password
+      ansible.builtin.debug:
+        msg: Output of connection is {{ connection-output }}
