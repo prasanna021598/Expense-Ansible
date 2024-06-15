@@ -2,7 +2,7 @@
   hosts: DB
   become: true
   vars:
-    login_host: DB
+    login_host: db.itindustry.online
   vars_prompt:
     - name: mysql-root-password
       prompt: please enter password
