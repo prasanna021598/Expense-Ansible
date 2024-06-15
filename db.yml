@@ -3,8 +3,9 @@
   become: true
   tasks:
     - name: installing mysql server
-      ansible.builtin.command: dnf install mysql-server -y
-      state: latest
+      ansible.builtin.dnf:
+        name: mysql
+        state: latest
     - name: enabling mysql service
       service:
         name: mysqld
