@@ -10,4 +10,9 @@
       service:
         name: mysqld
         enabled: yes
+    - name: starting mysql service
+      service:
+        name: mysqld
+        state: started
+        
 
