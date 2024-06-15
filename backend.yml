@@ -2,12 +2,21 @@
   hosts: Backend
   become: true
   tasks:
-  - name: disabling nodejs  and enabling nodejs with version 20
+  - name: disabling nodejs 
     ansible.builtin.command: dnf module disable nodejs -y
+  - name: enabling version 20
     ansible.builtin.command: dnf module enable nodejs:20 -y
-  - name: installing nodejs and adding user 
-    ansible.builtin.command: dnf install nodejs -y
-    ansible.builtin.command: useradd expense
+  - name: installing nodejs 
+    ansible.builtin.dnf:
+      name : "{{ item }}"
+      state: installed
+    loop:
+      - nodejs
+      - mysql
+  - name: assing user
+    ansible.builtin.user:
+      name: expense
+      state: present
   - name: create directory when not present
     ansible.builtin.command: mkdir /app
     when: changed is true
