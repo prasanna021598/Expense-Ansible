@@ -1,0 +1,20 @@
+- name: backend configurations for expense project
+  hosts: backend
+  tasks:
+  - name: disabling nodejs  and enabling nodejs with version 20
+    ansible.builtin.commad: dnf module disable nodejs -y
+    ansible.builtin.commad: dnf module enable nodejs:20 -y
+  - name: installing nodejs and adding user 
+    ansible.builtin.command: dnf install nodejs -y
+    ansible.builtin.command: useradd expense
+    ansible.builtin.command: mkdir /app
+  - name: Copying application code to tmp directory
+    ansible.builtin.copy:
+      src: https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip
+      dest: /tmp/backend.zip
+      remote_src: yes
+  - name: Unzip the file that is tmp directory
+    ansible.builtin.unarchive:
+      src: /tmp/backend.zip
+      dest: /tmp/backend.zip
+      remote_src: yes
