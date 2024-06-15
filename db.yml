@@ -4,9 +4,9 @@
   vars:
     login_host: db.itindustry.online
   vars_prompt:
-    - name: mysql-root-password
-      prompt: please enter password
-      private: no
+  - name: mysql-root-password
+    prompt: please enter password
+    private: no
   tasks:
     - name: installing mysql server
       ansible.builtin.dnf:
