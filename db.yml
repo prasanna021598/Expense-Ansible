@@ -23,7 +23,7 @@
         login_password: "{{ mysql-root-password }}"
         filter: version
       ignore_errors: yes
-      register: connection-output
+      register: connection_output
     - name: printing output of the connection with password
       ansible.builtin.debug:
-        msg: Output of connection is {{ connection-output }}
+        msg: Output of connection is {{ connection_output }}
