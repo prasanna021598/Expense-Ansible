@@ -11,4 +11,11 @@
       - name: nginx
         state: started
         enabled: yes
-  
+  - name: Delete html directory which is default
+    ansible.builtin.file:
+      state: absent
+      path: /usr/share/nginx/html
+  - name: creating html directory again to download frontend code
+    ansible.builtin.file:
+      state: directory
+      path: /usr/share/nginx/html
