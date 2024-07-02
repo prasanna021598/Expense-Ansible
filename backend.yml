@@ -3,7 +3,7 @@
   become: true
   vars:
     login_host: db.itindustry.online
-    login_password: ExpenseApp@1
+    login_password: ExpenseApp1
   tasks:
   - name: disabling nodejs 
     ansible.builtin.command: dnf module disable nodejs -y
