@@ -22,7 +22,7 @@
       state: present
   - name: create directory when not present
     ansible.builtin.command: mkdir /app
-    when: changed is true
+    #when: changed is true
   - name: Dowloading application code to tmp directory
     ansible.builtin.get_url:
       url: https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip
