@@ -1,8 +1,12 @@
 [Frontend]
-itindustry.online
+frontend.itindustry.online
 
 [DB]
 db.itindustry.online
 
 [Backend]
 backend.itindustry.online
+
+[all:vars]
+ansible_user=ec2-user
+ansible_password=DevOps321
